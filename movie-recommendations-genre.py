@@ -1,3 +1,4 @@
+import streamlit as st
 import random
 
 # Dictionary of movies categorized by genre
@@ -15,16 +16,18 @@ def recommend_movie(genre):
     else:
         return "Sorry, we don't have recommendations for that genre."
 
-# Main function
+# Main function to run the Streamlit app
 def main():
-    print("Welcome to the Movie Recommender!")
+    st.title("Movie Recommender")
+    st.subheader("Welcome to Movie Recommender! Get personalized movie recommendations based on your preferred genre.")
 
     # Ask user for their preferred genre
-    genre = input("Please enter your preferred genre (action, comedy, drama, horror): ")
+    genre = st.selectbox("Select your preferred movie genre:", ["Action", "Comedy", "Drama", "Horror"])
 
     # Recommend a movie based on the user's preference
-    recommendation = recommend_movie(genre)
-    print("We recommend you watch:", recommendation)
+    if st.button("Recommend"):
+        recommendation = recommend_movie(genre)
+        st.success(f"We recommend you watch: {recommendation}")
 
 if __name__ == "__main__":
     main()
