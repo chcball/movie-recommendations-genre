@@ -1,6 +1,8 @@
 import streamlit as st
 import openai
 import random
+import google.generativeai as genai
+from dotenv import load_dotenv
 
 # Dictionary of movies categorized by genre
 movies = {
