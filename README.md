@@ -21,7 +21,7 @@ The application is built upon the following essential tools:
 
 1. **Genre Selection**: Choose your preferred movie genre from the dropdown menu.
 2. **Personalized Recommendations**: Get a randomly selected movie recommendation tailored to your chosen genre.
-3. **Detailed Information**: View movie posters, descriptions, IMDb ratings, director, main cast, and trailer links for recommended movies.
+3. **Detailed Information**: View movie descriptions to get to know what you can expect in the movie.
 
 ## Application Usage
 
