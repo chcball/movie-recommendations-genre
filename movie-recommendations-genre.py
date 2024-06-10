@@ -31,10 +31,10 @@ movies_with_descriptions = {
     ]
 }
 
-# Function to recommend a movie based on genre
-def recommend_movie(genre):
+# Function to recommend movies based on genre
+def recommend_movies(genre, num_recommendations=3):
     if genre.lower() in movies_with_descriptions:
-        return random.choice(movies_with_descriptions[genre.lower()])
+        return random.sample(movies_with_descriptions[genre.lower()], min(num_recommendations, len(movies_with_descriptions[genre.lower()])))
     else:
         return "Sorry, we don't have recommendations for that genre."
 
@@ -46,10 +46,15 @@ def main():
     # Ask user for their preferred genre
     genre = st.selectbox("Select your preferred movie genre:", ["Action", "Comedy", "Drama", "Horror"])
 
-    # Recommend a movie based on the user's preference
+    # Recommend movies based on the user's preference
     if st.button("Recommend"):
-        recommendation = recommend_movie(genre)
-        st.success(f"We recommend you watch: {recommendation['title']} - {recommendation['description']}")
+        recommendations = recommend_movies(genre)
+        if isinstance(recommendations, str):
+            st.warning(recommendations)
+        else:
+            st.subheader("We recommend you watch:")
+            for movie in recommendations:
+                st.success(f"**{movie['title']}** - {movie['description']}")
 
 if __name__ == "__main__":
     main()
